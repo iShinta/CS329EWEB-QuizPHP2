@@ -41,7 +41,7 @@
               $productName = (fgets($fh));
               print("<td>".$productName."</td>");
               $productPrice = (int)(fgets($fh));
-              print("<td>$ %4.2f</td>", $productPrice);
+              printf("<td>$ %4.2f</td>", $productPrice);
               print("<td align = \"center\"><input type = \"text\" name = \"product".$i."\" size = \"3\" /></td>");
               print("</tr>");
             }
