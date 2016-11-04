@@ -37,10 +37,10 @@
       $productid = "product".$i;
       $productName = (fgets($fh));
       $productPrice = (float)(fgets($fh));
-      $productItem = $_POST[$productid];
+      $productItem = (int)$_POST[$productid];
 
       $nbItems += $productItem;
-      $totalProduct = (float)$productPrice*(float)$productItem;
+      $totalProduct = (float)$productPrice*$productItem;
       $totalBill += $totalProduct;
 
       if ($productItem == "") $productItem = 0;?>
@@ -59,7 +59,7 @@
   <p /> <p />
 
   <?php
-    print ("You ordered $totalProduct popcorn items <br />");
+    print ("You ordered $nbItems popcorn items <br />");
     printf ("Your total bill is: $ %5.2f <br />", $totalBill);
     print ("Your chosen method of payment is: $payment <br />");
   ?>
