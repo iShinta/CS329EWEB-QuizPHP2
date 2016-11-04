@@ -1,90 +1,93 @@
 <html>
-<head>
-  <title> Process the popcorn3.html form </title>
-</head>
-<body>
-  <?php
+  <head>
+    <title> Popcorn Sales - for PHP handling </title>
+  </head>
+  <body>
 
-// Get form data values
+    <form action = "popcorn_proc.php" method = "post">
+      <h2> World of Popcorn </h2>
 
-    $unpop = $_POST["unpop"];
-    $caramel = $_POST["caramel"];
-    $caramelnut = $_POST["caramelnut"];
-    $toffeynut = $_POST["toffeynut"];
-    $name = $_POST["name"];
-    $street = $_POST["street"];
-    $city = $_POST["city"];
-    $payment = $_POST["payment"];
+      <table>
 
-// If any of the quantities are blank, set them to zero
+<!-- Text widgets for the customer’s name and address -->
 
-    if ($unpop == "") $unpop = 0;
-    if ($caramel == "") $caramel = 0;
-    if ($caramelnut == "") $caramelnut = 0;
-    if ($toffeynut == "") $toffeynut = 0;
+        <tr>
+          <td> Buyers Name: </td>
+          <td> <input type = "text" name = "name" size = "30" /></td>
+        </tr>
+        <tr>
+          <td> Street Address: </td>
+          <td> <input type = "text" name = "street" size = "30" /></td>
+	        </tr>
+	        <tr>
+	          <td> City, State, Zip: </td>
+	          <td> <input type = "text" name = "city" size = "30" /></td>
+	        </tr>
+	      </table>
 
-// Compute the item costs and total cost
+	      <p>
+	      <table border = "border">
 
-    $unpop_cost = 3.0 * $unpop;
-    $caramel_cost = 3.5 * $caramel;
-    $caramelnut_cost = 4.5 * $caramelnut;
-    $toffeynut_cost = 5.0 * $toffeynut;
-    $total_price = $unpop_cost + $caramel_cost +
-                   $caramelnut_cost + $toffeynut_cost;
-    $total_items = $unpop + $caramel + $caramelnut + $toffeynut;
+	<!-- First, the column headings -->
 
-// Return the results to the browser in a table
+	        <tr>
+	          <th> Product </th>
+	          <th> Price </th>
+	          <th> Quantity </th>
+	        </tr>
 
-  ?>
-  <h4> Customer: </h4>
-  <?php
-    print ("$name <br /> $street <br /> $city <br />");
-  ?>
-  <p /> <p />
-<table border = "border">
-    <caption> Order Information </caption>
-    <tr>
-      <th> Product </th>
-      <th> Unit Price </th>
-      <th> Quantity Ordered </th>
-      <th> Item Cost </th>
-    </tr>
-    <tr align = "center">
-      <td> Unpopped Popcorn </td>
-      <td> $3.00 </td>
-      <td> <?php print ("$unpop"); ?> </td>
-      <td> <?php printf ("$ %4.2f", $unpop_cost); ?>
-      </td>
-    </tr>
-    <tr align = "center">
-      <td> Caramel Popcorn </td>
-      <td> $3.50 </td>
-      <td> <?php print ("$caramel"); ?> </td>
-      <td> <?php printf ("$ %4.2f", $caramel_cost); ?>
-      </td>
-      </tr>
-    <tr align = "center">
-      <td> Caramel Nut Popcorn </td>
-      <td> $4.50 </td>
-      <td> <?php print ("$caramelnut"); ?> </td>
-      <td> <?php printf ("$ %4.2f", $caramelnut_cost); ?>
-      </td>
-    </tr>
-    <tr align = "center">
-      <td> Toffey Nut Popcorn </td>
-      <td> $5.00 </td>
-      <td> <?php print ("$toffeynut"); ?> </td>
-      <td> <?php printf ("$ %4.2f", $toffeynut_cost); ?>
-      </td>
-    </tr>
-  </table>
-  <p /> <p />
+	<!-- Now, the table data entries -->
 
-  <?php
-    print ("You ordered $total_items popcorn items <br />");
-    printf ("Your total bill is: $ %5.2f <br />", $total_price);
-    print ("Your chosen method of payment is: $payment <br />");
-  ?>
-</body>
+	        <tr>
+	          <td> Unpopped Popcorn (1 lb.) </td>
+	          <td> $3.00 </td>
+	          <td align = "center">
+	            <input type = "text" name = "unpop"
+	                   size = "3" /></td>
+	        </tr>
+	        <tr>
+	          <td> Caramel Popcorn (2 lb. canister) </td>
+	          <td> $3.50 </td>
+	          <td align = "center">
+	            <input type = "text" name = "caramel"
+	                   size = "3" /> </td>
+	        </tr>
+	        <tr>
+	          <td> Caramel Nut Popcorn (2 lb. canister) </td>
+	          <td> $4.50 </td>
+	          <td align = "center">
+	            <input type = "text" name = "caramelnut"
+	                   size = "3" /> </td>
+	        </tr>
+	        <tr>
+	          <td> Toffey Nut Popcorn (2 lb. canister) </td>
+		  <td> $5.00 </td>
+          <td align = "center">
+            <input type = "text" name = "toffeynut" size = "3" /> </td>
+        </tr>
+      </table>
+      </p>
+
+<!-- The radio buttons for the payment method -->
+
+      <h3> Payment Method </h3>
+      <p>
+        <input type = "radio" name = "payment" value = "visa"
+              checked = "checked" />
+          Visa <br />
+        <input type = "radio" name = "payment" value = "mc" />
+          Master Card <br />
+        <input type = "radio" name = "payment"
+               value = "discover" />
+          Discover <br />
+        <input type = "radio" name = "payment" value = "check" />
+          Check <br /> <br />
+
+<!-- The submit and reset buttons -->
+
+        <input type = "submit" value = "Submit Order" />
+        <input type = "reset" value = "Clear Order Form" />
+      </p>
+    </form>
+  </body>
 </html>
-_a
