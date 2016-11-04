@@ -34,9 +34,9 @@
           <?php
             //Read the file and create the line in the form
             $fh = fopen("popcorn_data.txt", "r");
-            $lineNb = (int)(fgets($fh))-1;
+            $lineNb = (int)(fgets($fh));
             echo $lineNb;
-            for($i = 0; $i < $lineNb/2; $i++){
+            for($i = 0; $i < $lineNb; $i++){
               print("<tr>");
               $productName = (fgets($fh));
               print("<td>".$productName."Yolo</td>");
