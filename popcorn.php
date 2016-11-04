@@ -36,7 +36,7 @@
             $fh = fopen("popcorn_data.txt", "r");
             $lineNb = (int)(fgets($fh))-1;
             echo $lineNb;
-            for($i = 0; $i < $lineNb/2; i++){
+            for($i = 0; $i < $lineNb/2; $i++){
               print("<tr>");
               print("Yolo");
               /*$productName = (fgets($fh));
