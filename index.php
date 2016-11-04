@@ -10,12 +10,12 @@
   <body>
     <?php
       $listSignUp = array(
-        1 => "Arnold",
-        2 => "Olga",
+        1 => "",
+        2 => "",
         3 => "",
         4 => "",
         5 => "",
-        6 => "Arthur",
+        6 => "",
         7 => "",
         8 => "",
         9 => ""
@@ -25,16 +25,24 @@
       $fh = fopen("signup.txt", "r");
       while(!feof($fh)){
         //Read line
-        $lineNb = fgets($fh);
-        echo $lineNb;
+        $lineNb = (int)(fgets($fh));
+        //echo $lineNb;
+        $temp = $lineNb;
 
         //Read Name
         $line = fgets($fh);
+        if($lineNb != 0){
+          $listSignUp[$lineNb] = $line;
+        }
         $listSignUp[$lineNb] = $line;
-        echo $line;
+        //echo $line;
+        //echo $listSignUp[$lineNb];
       }
       fclose($fh);
 
+      /*foreach ($listSignUp as $key => $value) {
+        echo "a: ".$key." - ".$value."<br/>";
+      }*/
 
       function getName($i){
         global $listSignUp;
