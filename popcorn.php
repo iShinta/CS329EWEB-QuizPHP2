@@ -38,9 +38,8 @@
             echo $lineNb;
             for($i = 0; $i < $lineNb/2; $i++){
               print("<tr>");
-              print("Yolo");
               $productName = (fgets($fh));
-              print("<td>".$productName."</td>");
+              print("<td>".$productName."Yolo</td>");
               $productPrice = (int)(fgets($fh));
               print("<td>".$productPrice."</td>");
               print("<td align = \"center\"><input type = \"text\" name = \"product".$i."\" size = \"3\" /></td>");
