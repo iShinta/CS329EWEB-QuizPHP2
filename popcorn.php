@@ -6,11 +6,8 @@
 
     <form action = "popcorn_proc.php" method = "post">
       <h2> World of Popcorn </h2>
-
       <table>
-
-<!-- Text widgets for the customer’s name and address -->
-
+        <!-- Text widgets for the customer’s name and address -->
         <tr>
           <td> Buyers Name: </td>
           <td> <input type = "text" name = "name" size = "30" /></td>
@@ -27,17 +24,29 @@
 
 	      <p>
 	      <table border = "border">
-
-	<!-- First, the column headings -->
-
+	        <!-- First, the column headings -->
 	        <tr>
 	          <th> Product </th>
 	          <th> Price </th>
 	          <th> Quantity </th>
 	        </tr>
-
-	<!-- Now, the table data entries -->
-
+          <!-- Now, the table data entries -->
+          <?php
+            //Read the file and create the line in the form
+            $fh = fopen("popcorn_data.txt", "r");
+            $lineNb = (int)(fgets($fh))-1;
+            echo $lineNb;
+            for($i = 0; $i < $lineNb/2; i++){
+              print("<tr>");
+              $productName = (fgets($fh));
+              print("<td>".$productName."</td>");
+              $productPrice = (int)(fgets($fh));
+              print("<td>".$productPrice."</td>");
+              print("<td align = \"center\"><input type = \"text\" name = \"product".$i."\" size = \"3\" /></td>");
+              print("</tr>");
+            }
+            fclose($fh);
+          ?>
 	        <tr>
 	          <td> Unpopped Popcorn (1 lb.) </td>
 	          <td> $3.00 </td>
