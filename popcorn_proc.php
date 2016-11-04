@@ -4,9 +4,56 @@
 </head>
 <body>
   <?php
+    //General variables
+    $nbItems = 0;
+    $totalBill = 0;
 
-// Get form data values
+    //Customer's information
+    $name = $_POST["name"];
+    $street = $_POST["street"];
+    $city = $_POST["city"];
+    $payment = $_POST["payment"];
 
+    ?>
+    <h4> Customer: </h4>
+    <?php
+      print ("$name <br /> $street <br /> $city <br />");
+    ?>
+    <p /> <p />
+    <table border = "border">
+        <caption> Order Information </caption>
+        <tr>
+          <th> Product </th>
+          <th> Unit Price </th>
+          <th> Quantity Ordered </th>
+          <th> Item Cost </th>
+        </tr>
+    <?php
+
+    //Read the file and process the data for each product
+    $fh = fopen("popcorn_data.txt", "r");
+    $lineNb = (int)(fgets($fh));
+    for($i = 0; $i < $lineNb; $i++){
+      $productid = "product".$i;
+      echo $productid;
+      $productName = (fgets($fh));
+
+      $productPrice = (int)(fgets($fh));
+
+      $productItem = $_POST[$productid];
+      if ($productItem == "") $productItem = 0;?>
+      <tr align = "center">
+        <td> <?php print ("$productName"); ?> </td>
+        <td> <?php printf ("$ %4.2f", $productPrice); ?> </td>
+        <td> <?php print ("$productItem"); ?> </td>
+        <td> <?php printf ("$ %4.2f", (int)$productPrice*(int)$productItem); ?>
+        </td>
+      </tr>
+      <?php
+    }
+    fclose($fh);
+
+    // Get form data values
     //TODO: Replace with array of items. From Form or from File?
     $unpop = $_POST["unpop"];
     $caramel = $_POST["caramel"];
@@ -19,11 +66,6 @@
     if ($caramelnut == "") $caramelnut = 0;
     if ($toffeynut == "") $toffeynut = 0;
 
-    //Customer's information
-    $name = $_POST["name"];
-    $street = $_POST["street"];
-    $city = $_POST["city"];
-    $payment = $_POST["payment"];
 
 
     //TODO: See previous. Compute the item costs and total cost
@@ -34,25 +76,7 @@
     $total_price = $unpop_cost + $caramel_cost +
                    $caramelnut_cost + $toffeynut_cost;
     $total_items = $unpop + $caramel + $caramelnut + $toffeynut;
-
-// Return the results to the browser in a table
-
   ?>
-  <h4> Customer: </h4>
-  <?php
-    print ("$name <br /> $street <br /> $city <br />");
-  ?>
-  <p /> <p />
-<table border = "border">
-    <caption> Order Information </caption>
-    <tr>
-      <th> Product </th>
-      <th> Unit Price </th>
-      <th> Quantity Ordered </th>
-      <th> Item Cost </th>
-    </tr>
-
-    <?php //TODO: Use Array to display all the items + price ?>
     <tr align = "center">
       <td> Unpopped Popcorn </td>
       <td> $3.00 </td>
