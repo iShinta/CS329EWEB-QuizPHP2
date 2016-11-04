@@ -40,7 +40,7 @@
       $productItem = $_POST[$productid];
 
       $nbItems += $productItem;
-      $totalProduct = (int)$productPrice*(int)$productItem;
+      $totalProduct = (float)$productPrice*(float)$productItem;
       $totalBill += $totalProduct;
 
       if ($productItem == "") $productItem = 0;?>
@@ -65,4 +65,3 @@
   ?>
 </body>
 </html>
-_a
