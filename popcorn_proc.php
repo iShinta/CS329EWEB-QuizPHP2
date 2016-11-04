@@ -36,7 +36,7 @@
     for($i = 0; $i < $lineNb; $i++){
       $productid = "product".$i;
       $productName = (fgets($fh));
-      $productPrice = (int)(fgets($fh));
+      $productPrice = (float)(fgets($fh));
       $productItem = $_POST[$productid];
 
       $nbItems += $productItem;
