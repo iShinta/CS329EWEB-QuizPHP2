@@ -39,7 +39,7 @@
             for($i = 0; $i < $lineNb; $i++){
               print("<tr>");
               $productName = (fgets($fh));
-              print("<td>".$productName."Yolo</td>");
+              print("<td>".$productName."</td>");
               $productPrice = (int)(fgets($fh));
               print("<td>".$productPrice."</td>");
               print("<td align = \"center\"><input type = \"text\" name = \"product".$i."\" size = \"3\" /></td>");
@@ -47,33 +47,6 @@
             }
             fclose($fh);
           ?>
-	        <tr>
-	          <td> Unpopped Popcorn (1 lb.) </td>
-	          <td> $3.00 </td>
-	          <td align = "center">
-	            <input type = "text" name = "unpop"
-	                   size = "3" /></td>
-	        </tr>
-	        <tr>
-	          <td> Caramel Popcorn (2 lb. canister) </td>
-	          <td> $3.50 </td>
-	          <td align = "center">
-	            <input type = "text" name = "caramel"
-	                   size = "3" /> </td>
-	        </tr>
-	        <tr>
-	          <td> Caramel Nut Popcorn (2 lb. canister) </td>
-	          <td> $4.50 </td>
-	          <td align = "center">
-	            <input type = "text" name = "caramelnut"
-	                   size = "3" /> </td>
-	        </tr>
-	        <tr>
-	          <td> Toffey Nut Popcorn (2 lb. canister) </td>
-		  <td> $5.00 </td>
-          <td align = "center">
-            <input type = "text" name = "toffeynut" size = "3" /> </td>
-        </tr>
       </table>
       </p>
 
@@ -95,7 +68,7 @@
 <!-- The submit and reset buttons -->
 
         <input type = "submit" value = "Submit Order" />
-        <input type = "reset" value = "Clear Order Form" />
+        <input type = "reset" value = "Clear Form" />
       </p>
     </form>
   </body>
